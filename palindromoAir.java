@@ -94,7 +94,7 @@ private double incomeHelper(int index) {
     }
     
     //g 
-    public void sellTicket(String name) {
+   public void sellTicket(String name) {
         int availableIndex = firstAvailable();
         if (availableIndex == -1) {
             System.out.println("No hay asientos disponibles.");
@@ -104,11 +104,26 @@ private double incomeHelper(int index) {
         double precioBase = 800.0;
         double precioFinal = precioBase;
 
-        
+     
         if (isPalindromo(name)) {
-            precioFinal = precioBase * 0.8;
+            precioFinal = precioBase * 0.8; 
+        }
+
+        Ticket nuevoTicket = new Ticket(name, precioFinal);
+        ticket[availableIndex] = nuevoTicket;
+
+       
+        System.out.println("Ticket vendido a " + name + ". Monto a pagar: $" + precioFinal);
+    }
+
+   
+    public void asignarAsiento(int posicion, Ticket Ticket) {
+        if (posicion >= 0 && posicion < ticket.length) {
+            ticket[posicion] = Ticket;
         }
     }
+
+
       //h-k
       public boolean cancelTicket(String name, int i){
           if (i<ticket.length) {
